@@ -10,14 +10,15 @@ export default function Login() {
     const {login} = useContext(AuthContext)
     const navigate = useNavigate();
 
-    const loginUser = async () => {
+    const loginUser = async (e) => {
+        e.preventDefault()
         const userData = JSON.stringify({ email: email, password: password });
         console.log("userData before login : ", userData);
         try {
             const loginUser = await axios.post('http://localhost:5000/api/user/login', { email, password });
             console.log(loginUser?.data.accessToken);
             login(loginUser?.data.accessToken);
-            navigate('/')
+            navigate('/', { replace: true })
         } catch (error) {
             if (error.response) {
                 console.error('Response error:', error.response.data);

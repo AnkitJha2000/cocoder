@@ -10,14 +10,15 @@ export default function SignUp() {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const signUpUser = async () => {
+  const signUpUser = async (e) => {
+    e.preventDefault()
     console.log("before sign up user : ", name, email, password)
     try {
       const userData = await axios.post("http://localhost:5000/api/user/register", { email: email, password: password, name: name })
       if (!userData) throw Error("internal error : not able to sign up")
       console.log(userData);
       login(userData?.data.accessToken);
-      navigate('/')
+      navigate('/' , {replace : true})
     } catch (error) {
       console.log(error)
     }
