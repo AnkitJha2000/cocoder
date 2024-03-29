@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import "./App.css"
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import CodeEditorPage from '../pages/editor/CodeEditorPage';
 
 export default function App() {
   const { isLoading, isLoggedIn } = useContext(AuthContext);
@@ -15,6 +16,7 @@ export default function App() {
           {/*authorized routes only*/}
           <Route path="/" element={<ProtectedRoute> <Home /> </ProtectedRoute>} />
           <Route path="/home" element={<ProtectedRoute> <Home /> </ProtectedRoute>} />
+          <Route path='/editor/:id' element = {<ProtectedRoute><CodeEditorPage/></ProtectedRoute>} />
           
           {/* no auth req. */}
           <Route path="/login" element={<LoginRegister />} />
