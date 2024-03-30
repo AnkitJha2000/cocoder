@@ -4,13 +4,18 @@ const connectToSocket = async (io) => {
 
         // Listen for the 'join' event from client-side and execute callback with  room name
         socket.on('join', onUserJoin);
-        
+        socket.on('leaveRoom' , onLeaveRoom);
+        // Adds a disconnection listener that
         socket.on("disconnect", () => {
             console.log("user disconnected");
         });
     });
-    
+
 };
+
+const onLeaveRoom = async(roomName , callback) => {
+    
+}
 
 const onUserJoin = async(roomName, callback) => {
     let error = false;

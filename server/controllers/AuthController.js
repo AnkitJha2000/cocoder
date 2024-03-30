@@ -68,7 +68,7 @@ const getAllUsers = async (req, res, next) => {
 
 const validateToken = async(req, res, next) => {
     try {
-        console.log("validate token : ", req);
+        // console.log("validate token : ", req);
         const token = req.body.accessToken;
         console.log("to validate : ", token);
         const role = req.body.userRole;

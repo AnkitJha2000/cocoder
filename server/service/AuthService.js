@@ -74,7 +74,7 @@ const validateToken = async(token , role) => {
     try {
         // console.log(`user id : ${userId}`);
         const findUser =  await userModel.findOne({ _id : userId });
-        console.log(`user found is : ${findUser}`)
+        // console.log(`user found is : ${findUser}`)
         if(!findUser) return { isValid:false ,message:"Invalid token"};
         else return { isValid : true , message : "valid token"};
     } catch (error) {
