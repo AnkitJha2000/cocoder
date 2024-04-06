@@ -10,7 +10,6 @@ const connectToSocket = async (io) => {
             console.log("user disconnected");
         });
     });
-
 };
 
 const onLeaveRoom = async(roomName , callback) => {

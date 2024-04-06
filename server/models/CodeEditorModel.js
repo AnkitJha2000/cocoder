@@ -5,11 +5,11 @@ const codeEditorSchema = new mongoose.Schema(
         code: { type: String },
         language: { type: String, required: true, default: "javascript" },
         createdBy: { type: String, required: true },
-        islive: { type: Booolean, required: true },
+        isLive: { type: Boolean, required: true},
     },
     { timestamps: true }
 );
 
-const codeEditorModel = mongoose.model("codeEditor", codeEditorSchema);
+const CodeEditorModel = mongoose.model("codeEditor", codeEditorSchema);
 
-module.exports = { codeEditorModel };
+module.exports = { CodeEditorModel };

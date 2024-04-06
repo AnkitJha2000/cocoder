@@ -3,6 +3,7 @@ const { userModel } = require("../models/User");
 const bcrypt = require("bcrypt")
 const jwt = require('jsonwebtoken');
 const {SECRET_KEY , decodeJWT} = require("../utils/Encryption");
+
 const registerUser = async (user) => {
   try {
     if (!user.name || !user.email || !user.password) createHttpError(400, "provide credentials");
@@ -57,7 +58,7 @@ const getAllUsers = async() => {
 
 const generateToken = (user) => {
     try {
-        const token = jwt.sign({ userId: user.userId }, SECRET_KEY, { algorithm: "HS256", expiresIn: '24h' });
+        const token = jwt.sign({ userId: user.userId }, SECRET_KEY, { algorithm: "HS256", expiresIn: '10000h' });
         return token;
     } catch (err) {
         console.log(err);
